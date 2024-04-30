@@ -2,14 +2,15 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] array) {
-        List<Integer> list = new ArrayList<>();
-        for(int i : array){
-            list.add(i);
+        int idx = 0;
+        int max = array[idx];
+        for(int i=1; i<array.length; i++) {
+            if(array[i] > max){
+                max = array[i];
+                idx = i;
+            }
         }
-        Arrays.sort(array);
         
-        int len = array.length;
-        int max = array[len-1];
-        return new int[]{max, list.indexOf(max)};
+        return new int[]{max, idx};
     }
 }
