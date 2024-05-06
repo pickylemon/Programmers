@@ -3,11 +3,10 @@ import java.util.*;
 class Solution {
     public int solution(int order) {
         int clap = 0;
-        Integer[] numArr = {3, 6, 9};
-        List<Integer> list = List.of(numArr);
+
         while(order > 0) {
             int rest = order % 10;
-            if(list.contains(rest)) clap++;
+            if(rest == 3 || rest == 6 || rest == 9) clap++;
             order /= 10;
         }
         
