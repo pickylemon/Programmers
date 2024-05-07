@@ -2,8 +2,7 @@ import java.util.stream.*;
 
 class Solution {
     public int solution(String my_string) {
-        String tmp = my_string.replaceAll("[a-z|A-Z]",",");
-        return Stream.of(tmp.split(","))
+        return Stream.of(my_string.split("[^0-9]"))
             .filter(s->!s.equals(""))
             .mapToInt(Integer::parseInt)
             .sum();
