@@ -2,11 +2,12 @@ class Solution {
     public int solution(int n) {
         int multiply = 1;
         int i = 0;
-        int answer = 0;
-        while(multiply <= n){
-            answer = i;
-            multiply *= ++i;
+        while(true){
+            if(multiply <= n){
+                multiply *= ++i;
+            } else break;
         }
-        return answer;
+        
+        return i-1;
     }
 }
