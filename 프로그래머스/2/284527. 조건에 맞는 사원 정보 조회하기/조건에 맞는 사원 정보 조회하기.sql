@@ -1,0 +1,25 @@
+-- 코드를 작성해주세요
+# SELECT a.SCORE, a.EMP_NO, a.EMP_NAME, a.POSITION, a.EMAIL
+# FROM (SELECT SUM(g.SCORE) SCORE, e.EMP_NO EMP_NO, EMP_NAME, POSITION, EMAIL, RANK() OVER(ORDER BY SUM(g.SCORE) DESC) as RANK
+#     FROM HR_EMPLOYEES e
+#     JOIN HR_GRADE g
+#     ON e.EMP_NO = g.EMP_NO
+#     WHERE g.YEAR = '2022'
+#     GROUP BY e.EMP_NO) a
+# WHERE RANK() OVER(ORDER BY a.SCORE DESC) = 1;
+
+
+SELECT b.SCORE, e.EMP_NO, e.EMP_NAME, e.POSITION, e.EMAIL
+FROM HR_EMPLOYEES e
+JOIN (SELECT a.EMP_NO, a.SCORE, RANK() OVER(ORDER BY a.SCORE DESC) as Ranking
+      FROM (SELECT e.EMP_NO EMP_NO, SUM(g.SCORE) SCORE
+            FROM HR_EMPLOYEES e
+            JOIN HR_GRADE g
+            ON e.EMP_NO = g.EMP_NO
+            WHERE g.YEAR = '2022'
+            GROUP BY e.EMP_NO) a)b
+ON e.EMP_NO = b.EMP_NO
+WHERE b.Ranking = 1;
+        
+    
+
