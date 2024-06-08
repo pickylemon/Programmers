@@ -1,0 +1,7 @@
+-- 코드를 작성해주세요
+SELECT COUNT(*) FISH_COUNT
+FROM (SELECT i.ID
+     FROM FISH_INFO i 
+     JOIN FISH_NAME_INFO n
+     ON i.FISH_TYPE = n.FISH_TYPE
+     WHERE n.FISH_NAME IN ('SNAPPER', 'BASS')) t;
