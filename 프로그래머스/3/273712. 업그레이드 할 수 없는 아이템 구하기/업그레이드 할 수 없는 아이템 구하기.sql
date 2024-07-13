@@ -1,0 +1,11 @@
+-- 코드를 작성해주세요
+-- 더이상 업그레이드 할 수 없다 = '나'를 부모로 하는 아이템이 없다.
+
+SELECT b.ITEM_ID, a.ITEM_NAME, a.RARITY
+FROM ITEM_TREE b
+LEFT OUTER JOIN ITEM_TREE c
+ON b.ITEM_ID = c.PARENT_ITEM_ID
+INNER JOIN ITEM_INFO a
+ON b.ITEM_ID = a.ITEM_ID
+WHERE c.ITEM_ID IS NULL
+ORDER BY a.ITEM_ID DESC;
