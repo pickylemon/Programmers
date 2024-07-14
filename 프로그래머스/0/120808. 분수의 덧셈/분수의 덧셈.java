@@ -22,18 +22,10 @@ class Solution {
             b = tmp;
         }
         
-        while(true) {
-            int c = a / b;
-            int left = a % b;
-            
-            if(left == 0) {
-                answer = b;
-                break;
-            }
-            
-            a = b;
-            b = left;
+        if(b==0) {
+            return a;
         }
-        return answer;       
+        
+        return getGCD(b, a%b);
     }
 }
